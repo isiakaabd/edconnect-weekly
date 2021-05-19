@@ -44,9 +44,9 @@ class DataModel {
         const c = this.data.findIndex( ele =>ele.id===id)
         if (c) {
             this.data.splice(c, 1)
-            return true
+            return false
         } 
-         return false
+         return true
     }
     // this method will be overriden in the sub classes
     validate(obj) {
