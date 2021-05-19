@@ -20,7 +20,8 @@ class User {
 class Users extends DataModel {
     authenticate(email, password) {
         let confirm = this.data.find(elem => elem.email===email && elem.password===password)
-        if(confirm)return true
+        if(confirm)return true;
+else return false
     }
 
     getByEmail(email) {
