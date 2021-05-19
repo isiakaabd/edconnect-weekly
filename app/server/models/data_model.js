@@ -40,12 +40,14 @@ class DataModel {
     }
 
     delete(id) {
-        let c = this.data.filter(ele => ele.id !=id)
-        this.data= c
-             return   c? true:false
-
+ 
+        const c = this.data.findIndex( ele =>ele.id===id)
+        if (c) {
+            this.data.splice(c, 1)
+            return true
+        } 
+        else return false
     }
-
     // this method will be overriden in the sub classes
     validate(obj) {
         return false;
