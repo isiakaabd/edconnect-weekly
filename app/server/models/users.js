@@ -24,20 +24,14 @@ class Users extends DataModel {
     }
 
     getByEmail(email) {
-        let confirm =  this.data.find(elem =>{
-            elem.email===email
-            return elem
-        }) 
-        return confirm? confirm : null
+    return   this.data.find(elem => elem.email===email) 
+      
 
     }
 
     getByMatricNumber(matricNumber) {
-        let confirm =  this.data.find(elem =>{
-            elem.matricNumber===matricNumber
-            return elem
-        }) 
-        return confirm? confirm : null
+       return this.data.find(elem =>elem.matricNumber===matricNumber) 
+        
     }
 
     validate(obj) {
@@ -59,7 +53,10 @@ class Users extends DataModel {
         }
 
         })
-        obj["password"].length <7 ? this.errors.push( "Password should have at least 7 characters"):false
+        if(obj["password"].length <7 ){
+         this.errors.push( "Password should have at least 7 characters")
+        }
+  
 
 
         if(this.errors.length==0){
