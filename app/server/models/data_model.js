@@ -9,7 +9,13 @@ class DataModel {
     }
 
     getById(id) {
-
+        var c = this.data.find(ele=>ele.id === id)
+    
+        if(c){
+            return c
+        }else{
+        return null
+        }
     }
 
     save(obj) {
@@ -22,9 +28,21 @@ class DataModel {
 
     update(obj, id) {
 
+        let c=   this.data.find(datum=> datum.id===id)
+        if (c) {
+      for (const key in obj) {
+              c[key] = obj[key];
+              
+          }
+          return true
+      }
+           return false
     }
 
     delete(id) {
+        let c = this.data.filter(ele => ele.id !=id)
+        this.data= c
+             return   c? true:false
 
     }
 
