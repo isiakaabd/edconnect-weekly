@@ -40,13 +40,15 @@ class DataModel {
     }
 
     delete(id) {
- 
-        const c = this.data.findIndex( ele =>ele.id===id)
-        if (c) {
-            this.data.splice(c, 1)
-            return true
-        } 
-         return false
+
+        
+        let user = this.data.find(item => item.id === id);
+        let index = this.data.indexOf(user);
+        if (user) {
+            this.data.splice(index, 1);
+            return true;
+        }
+        return false;
        
     }
     // this method will be overriden in the sub classes
