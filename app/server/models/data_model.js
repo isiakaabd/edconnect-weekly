@@ -45,8 +45,9 @@ class DataModel {
         if (c) {
             this.data.splice(c, 1)
             return true
-        } else if(!c) return false
-        //  return true
+        } 
+         return false
+       
     }
     // this method will be overriden in the sub classes
     validate(obj) {
