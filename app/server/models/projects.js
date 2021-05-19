@@ -15,9 +15,17 @@ class Project {
 class Projects extends DataModel {
     validate(obj) {
         this.errors =[];
-    Array.isArray(obj.authors) ? true: this.errors.push("Authors should be an array")
 
-    Array.isArray(obj.tags) ? true: this.errors.push("Tags should be an array")
+        if( !Array.isArray(obj.authors)){
+           this.errors.push("Authors should be an array")
+           
+        }
+        if( !Array.isArray(obj.tags)){
+           this.errors.push("Tags should be an array")
+           
+        }
+        
+     
 
     for (const key in obj) {
     
