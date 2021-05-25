@@ -14,31 +14,27 @@ class Project {
 
 class Projects extends DataModel {
     validate(obj) {
-        this.errors =[];
-
-        if( !Array.isArray(obj.authors)) this.errors.push("Authors should be an array")
-        
-        if( !Array.isArray(obj.tags))  this.errors.push("Tags should be an array")
-           
-        
-     
-
-    for (const key in obj) {
-    
-        if(obj[key]==="" ||  obj[key]===undefined || obj[key]=== null) this.errors.push( `${key} should not be empty`)
+        // this.errors.splice(0, this.errors.length)
+        this.errors = []
+        for (const property in obj) {
+            if (["authors", "tags"].includes(property)) {
+                if (!Array.isArray(obj[property])) {
+                    this.errors.push(`${property} should be an array`)
+                }
+            } else {
+                if (obj[property] === "") {
+                    this.errors.push(`${property} should not be empty`)
+                }
+            }
+        }
+        if (this.errors.length > 0) {
+            return false;
+        } else {
+            return true;
+        }
     }
-        
-    if(this.errors.length===0){
-        return true
-    }
-    return false
-    
 
-
-    }
 }
-
-
 // Do not worry about the below for now; It is included so that we can test your code
 // We will cover module exports in later parts of this course
 module.exports = {
